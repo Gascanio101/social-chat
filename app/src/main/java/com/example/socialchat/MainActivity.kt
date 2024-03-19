@@ -9,20 +9,19 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.socialchat.ui.theme.SocialChatTheme
 import android.Manifest
 import android.app.Application
-import com.example.socialchat.core.models.Contact
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.socialchat.ui.Views.ContactListScreen
 
 class MainActivity : ComponentActivity() {
 
+    private val vm: ContactViewModel by viewModels()
     private val PERMISSIONS_REQUEST_READ_CONTACTS = 1001 // Custom request code
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +49,7 @@ class MainActivity : ComponentActivity() {
                         color = MaterialTheme.colorScheme.background
                     ) {
                         // MainScreen() or any other UI components
-                        ContactListScreen(contactViewModel = ContactViewModel(Application()))
+                        ContactListScreen(vm = vm)
                     }
                 }
             }
@@ -75,7 +74,7 @@ class MainActivity : ComponentActivity() {
                             color = MaterialTheme.colorScheme.background
                         ) {
                             // MainScreen() or any other UI components
-                            ContactListScreen(contactViewModel = ContactViewModel(Application()))
+                            ContactListScreen(vm = ContactViewModel(Application()))
                         }
                     }
                 }
