@@ -53,7 +53,7 @@ fun MyContactCard(contact: Contact) {
                     } else R.drawable.contact_placeholder_v2,
 //                    contact.photoUri,
                     modifier = Modifier
-//                        .padding(8.dp)
+                        .padding(8.dp)
                         .size(160.dp)
                         .border(
                             2.dp,
@@ -76,6 +76,8 @@ fun MyContactCard(contact: Contact) {
                             contact.contactName.substringBefore("@")
                         } else contact.contactName,
                         modifier = Modifier.padding(8.dp),
+                        lineHeight = 40.sp,
+                        maxLines = 2,
                         fontSize = 32.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -83,6 +85,8 @@ fun MyContactCard(contact: Contact) {
                         text = contact.phoneNumber,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 24.sp,
+                        lineHeight = 32.sp,
+                        maxLines = 1,
                         fontWeight = FontWeight.SemiBold
                     )
                 }
@@ -114,16 +118,4 @@ fun MyContactCard(contact: Contact) {
             }
         }
     }
-}
-fun openWhatsAppChat(context: Context, phoneNumber: String) {
-    val intent = Intent(Intent.ACTION_VIEW)
-    intent.data = Uri.parse("https://wa.me/$phoneNumber")
-    context.startActivity(intent)
-}
-
-fun openPhoneDial(context: Context, phoneNumber: String) {
-    val intent = Intent(Intent.ACTION_DIAL).apply {
-        data = Uri.parse("tel:$phoneNumber")
-    }
-    context.startActivity(intent)
 }

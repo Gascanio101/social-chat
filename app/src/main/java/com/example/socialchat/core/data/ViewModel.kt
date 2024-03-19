@@ -1,6 +1,9 @@
 import android.app.Application
 import android.content.ContentResolver
+import android.content.Context
+import android.content.Intent
 import android.database.Cursor
+import android.net.Uri
 import android.provider.ContactsContract
 import android.util.Log
 import androidx.compose.runtime.MutableState
@@ -75,4 +78,18 @@ class ContactViewModel(application: Application) : AndroidViewModel(application)
         }
         return phoneNumber
     }
+}
+
+// Additional functions
+fun openWhatsAppChat(context: Context, phoneNumber: String) {
+    val intent = Intent(Intent.ACTION_VIEW)
+    intent.data = Uri.parse("https://wa.me/$phoneNumber")
+    context.startActivity(intent)
+}
+
+fun openPhoneDial(context: Context, phoneNumber: String) {
+    val intent = Intent(Intent.ACTION_DIAL).apply {
+        data = Uri.parse("tel:$phoneNumber")
+    }
+    context.startActivity(intent)
 }
