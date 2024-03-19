@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.socialchat"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.socialchat"
@@ -66,4 +66,8 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // Own Implementations
+    // Coil Image handling
+    implementation ("io.coil-kt:coil-compose:2.2.2")
 }
