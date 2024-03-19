@@ -2,6 +2,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -60,7 +62,9 @@ fun MyContactCard(contact: Contact) {
                             color = Colors.primaryColor,
                             shape = RoundedCornerShape(16.dp)
                         )
-                        .clip(shape = RoundedCornerShape(16.dp)),
+                        .clip(shape = RoundedCornerShape(16.dp))
+                        .background(color = Colors.secondaryColor),
+
                     placeholder = painterResource(R.drawable.contact_placeholder_v2),
                     contentDescription = "Contact Image"
                 )
@@ -100,20 +104,34 @@ fun MyContactCard(contact: Contact) {
                     onClick = { openPhoneDial(context, contact.phoneNumber) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp),
+                        .padding(8.dp)
+                        .border(
+                            2.dp,
+                            color = Colors.primaryColor,
+                            shape = RoundedCornerShape(16.dp)
+                        ),
                     colors = ButtonDefaults.buttonColors(Colors.secondaryColor),
                     shape = RoundedCornerShape(16.dp)
                 ) {
                     Text(text = "Llamar", fontSize = 32.sp, fontWeight = FontWeight.Bold)
+//                   TODO: Icon(bitmap = painterResource(id = R.drawable.ic_call), contentDescription = "Icono Llamar")
                 }
                 // WhatsApp Button
                 Button(
                     onClick = { openWhatsAppChat(context, contact.phoneNumber) },
-                    modifier = Modifier.fillMaxWidth().padding(8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                        .border(
+                            2.dp,
+                            color = Colors.primaryColor,
+                            shape = RoundedCornerShape(16.dp)
+                        ),
                     colors = ButtonDefaults.buttonColors(Colors.secondaryColor),
                     shape = RoundedCornerShape(16.dp)
                 ) {
                     Text(text = "WhatsApp", fontSize = 32.sp, fontWeight = FontWeight.Bold)
+//                  TODO:  Icon(bitmap = painterResource(id = R.drawable.ic_whatsapp), contentDescription = "Icono Whatsapp")
                 }
             }
         }
