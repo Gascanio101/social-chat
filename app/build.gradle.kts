@@ -70,4 +70,13 @@ dependencies {
     // Own Implementations
     // Coil Image handling
     implementation ("io.coil-kt:coil-compose:2.2.2")
+    // LiveData
+//    implementation ("androidx.compose.runtime:runtime-livedata:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:1.4.3")
+//    implementation ("androidx.compose.runtime:runtime-livedata:2.7.0")
+
+
+
+
+
 }
